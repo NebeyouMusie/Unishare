@@ -4,7 +4,7 @@ import Login from "./pages/login/Login";
 export default function App() {
   const router = createBrowserRouter(createRoutesFromElements(
     <Route path="/">
-      <Route path="/login" element={<Login />}/>
+      <Route index element={<Login />}/>
     </Route>
   ));
 
