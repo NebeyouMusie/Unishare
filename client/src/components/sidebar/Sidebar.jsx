@@ -32,6 +32,7 @@ const Sidebar = () => {
           <NavLink
             to='posts'
             className='navigationBtn'
+            style={({isActive}) => isActive ? style : null}
           >Posts</NavLink>
       </div>
       <p className='copyrightText'>Copyright © {currentyear}</p>
