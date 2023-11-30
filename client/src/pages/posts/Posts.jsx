@@ -1,8 +1,26 @@
+import { useEffect, useState } from 'react'
 import './posts.css'
 
 const Posts = () => {
+  const [postMessage, setPostMessage] = useState(false);
+
+  const handleClick = (e) => {
+    e.preventDefault(); 
+    setPostMessage(true);
+  }
+
+  useEffect(() => {
+    const timeId = setTimeout(() => {
+      setPostMessage(false);
+    }, 3000);
+
+    return () => clearTimeout(timeId);      
+
+  }, [postMessage]);
+
   return (
     <div className='posts'>
+     
       <div className='recentPosts'>
         <div className='postCard'>
           <div className='topContent'>
@@ -55,7 +73,12 @@ const Posts = () => {
         </div>
       </div>
       <div className='postForm'>
-        <form >
+        {postMessage && 
+        <div className={`${postMessage ? "postMessage displayPostMessage": "postMessage"}`}>
+            <p>Your post was successful! 🎉</p>
+        </div>
+        }
+        <form onSubmit={handleClick}>
           <div className='postTitle'>
             <p>Title</p>
             <input type="text" placeholder='Enter post title'/>
@@ -72,7 +95,7 @@ const Posts = () => {
             <p>Choose a file</p>
             <div className='chooseFile'>
               <label htmlFor="postFile">
-                <i class="fa-solid fa-file-circle-plus"></i>
+                {/* <i class="fa-solid fa-file-circle-plus"></i> */}
               </label>
               <input style={{display: "none"}} type="file" id='postFile'/>
               <select name="posttype" id="postType">
@@ -82,7 +105,10 @@ const Posts = () => {
               </select>
             </div>
           </div>
-          <button className="postButton" type='submit'>post</button>
+          <button 
+            className="postButton" 
+            type='submit'
+            >post</button>
         </form>
       </div>
     </div>
