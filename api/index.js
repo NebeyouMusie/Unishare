@@ -25,11 +25,11 @@ app.use("/api/post/get",postroute)
 
 //connect to database
 mongoose
-  .connect(process.env.mongo_url)
+  .connect(process.env.MONGO_URL)
   .then(console.log("connected to mongoDB"))
   .catch((err) => console.log(err));
 
   //listening 
-app.listen(5000, () => {
+app.listen(5000, () => { 
   console.log("server is successfully running on port 5000");
 });
