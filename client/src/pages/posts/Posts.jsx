@@ -44,7 +44,7 @@ const Posts = () => {
       e.preventDefault();
 
       try{
-        const response = await axios.post('http://localhost:5000/api/post/add', {
+        const response = await axios.post('https://unishare-nota.vercel.app/api/post/add', {
           title,
           description,
           postType,
