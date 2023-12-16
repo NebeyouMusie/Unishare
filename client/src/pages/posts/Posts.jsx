@@ -37,7 +37,7 @@ const Posts = () => {
   //     return post.username === user.others.name;
   //   }));
   // }, [posts]);
-
+  console.log(user.others.course)
   const handleSubmit = async (e) => {
 
   
@@ -48,7 +48,8 @@ const Posts = () => {
           title,
           description,
           postType,
-          username: user.others.name
+          username: user.others.name,
+          course: user.others.course,
         }, {withCredentials: true});
         // setPosts(prevPost => prevPost?.filter((post) => {
         //   return post.username === user.others.name;
@@ -58,6 +59,8 @@ const Posts = () => {
         setPostMessage(true);
         setSuccessMessage(response.data.msg);
         setErrorMessage(""); // Clear any previous error messages
+        setTitle("");
+        setDescription("");
         mutate('http://localhost:5000/api/post/get');
       } catch(err) {
         setPostMessage(true);
@@ -76,14 +79,14 @@ const Posts = () => {
           // Something happened in setting up the request that triggered an Error
           console.log('Error', err.message);
         }
-      }finally{
-        setTitle("");
-        setDescription("");
-        // setPostType("");
-        // setPostMessage("");
-        // setErrorMessage("");
-        // setSuccessMessage("");
       }
+      // finally{
+        
+      //   setPostType("");
+      //   setPostMessage("");
+      //   setErrorMessage("");
+      //   setSuccessMessage("");
+      // }
 
   }
  
@@ -160,15 +163,16 @@ const Posts = () => {
         <div className='postFile'>
           <p>Select post type</p>
           <div className='chooseFile'>
-            <label htmlFor="postFile">
-              {/* <i class="fa-solid fa-file-circle-plus"></i> */}
-            </label>
+            {postType !== 'Announcement'  && <label htmlFor="postFile">
+              <i class="fa-solid fa-file-circle-plus"></i> 
+            </label>}
             <input style={{display: "none"}} type="file" id='postFile'/>
             <select 
               name="posttype" 
               id="postType"
               value={postType}
               onChange={(e) => setPostType(e.target.value)}
+              className='selectPostType'
               >
               <option value="Announcement">Announcement</option>
               <option value="Resource">Resource</option>
@@ -195,10 +199,10 @@ const Posts = () => {
             onChange={(e) => setDescription(e.target.value)}
             />
         </div>
-        {/* <div className='postDueDate'>
+       {postType === 'Assignment' && <div className='postDueDate'>
           <p>Due Date</p>
           <input type="date" />
-        </div>  */}
+        </div> }
         <button 
           className="postButton" 
           type='submit'

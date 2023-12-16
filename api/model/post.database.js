@@ -28,6 +28,10 @@ const postschema = new mongoose.Schema(
     file:{
      type:String,
      default:"",
+    },
+    course:{
+      type:String,
+      required: true,
     }
   },
   { timestamps: true }

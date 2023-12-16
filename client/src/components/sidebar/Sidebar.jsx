@@ -29,14 +29,15 @@ const Sidebar = () => {
             style={({isActive}) => isActive ? style : null}
             >Dashboard</NavLink>
           <NavLink
-            to='/received'
+            to={`${user.others.role === "instructor" ? '/received' : '/notifications'}`}
+            style={({isActive}) => isActive ? style : null}
             className='navigationBtn'
-          >Received</NavLink>
+          >{`${user.others.role === "instructor" ? "Received" : "Notifications"}`}</NavLink>
           <NavLink
-            to='posts'
+            to={`${user.others.role === "instructor" ? "posts" : "submissions"}`}
             className='navigationBtn'
             style={({isActive}) => isActive ? style : null}
-          >Posts</NavLink>
+          >{`${user.others.role === "instructor" ? "Posts" : "Submissions"}`}</NavLink>
       </div>
       <div className='sidebarBottom'>
         <button 

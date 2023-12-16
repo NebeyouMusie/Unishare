@@ -1,12 +1,13 @@
 .dashboard{
     height: calc(100dvh - 65px);
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(1fr, 200px));
+    gap: 2rem;
     /* border-top-left-radius: 0.5rem; */
     border-radius: 0.5rem;
     background: #BEE9E8;
     padding: 2rem;
-    justify-content: space-between;
-    gap: 5rem;
 }
 .receivedAssignmentsCard{
   display: flex;
@@ -15,7 +16,6 @@
   text-align: center;
   background: #C14E4E;
   height: 200px;
-  width: 450px;
   border-radius: 0.5rem;
 }
 .receivedText{
@@ -28,7 +28,6 @@
   text-align: center;
   background: #BB9F06;
   height: 200px;
-  width: 400px;
   border-radius: 0.5rem;
 }
 .postsText{

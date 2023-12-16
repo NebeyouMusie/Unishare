@@ -34,7 +34,8 @@ module.exports = {
         description: req.body.description,
         date: req.body.date, 
         postType: req.body.postType,
-        username: req.body.username
+        username: req.body.username,
+        course: req.body.course,
       }); 
 
       const postedData = await newpost.save();
