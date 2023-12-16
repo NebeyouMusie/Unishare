@@ -9,7 +9,7 @@ const fetcher = url => axios.get(url).then(res => res.data);
 
 const Posts = () => {
 
-  const {data, error, isLoading} = useSWR('http://localhost:5000/api/post/get', fetcher);
+  const {data, error, isLoading} = useSWR('https://unishare-nota.vercel.app/api/post/get', fetcher);
   const {user} = useGlobalContext();
   let posts = data?.data.filter((post) => {
     return post.username === user.others.name;
@@ -61,7 +61,7 @@ const Posts = () => {
         setErrorMessage(""); // Clear any previous error messages
         setTitle("");
         setDescription("");
-        mutate('http://localhost:5000/api/post/get');
+        mutate('https://unishare-nota.vercel.app/api/post/get');
       } catch(err) {
         setPostMessage(true);
         if (err.response) {

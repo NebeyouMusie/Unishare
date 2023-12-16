@@ -9,7 +9,7 @@ const fetcher = url => axios.get(url).then(res => res.data);
 
 const Notifications = () => {
 
-  const {data, error, isLoading} = useSWR('http://localhost:5000/api/post/get', fetcher);
+  const {data, error, isLoading} = useSWR('https://unishare-nota.vercel.app/api/post/get', fetcher);
   const {user} = useGlobalContext();
   let posts = data?.data;
   console.log(user);
